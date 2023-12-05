@@ -169,6 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -180,9 +181,18 @@
     <Compile Include="Migrations\202312051127410_CreateDatabase.designer.cs">
       <DependentUpon>202312051127410_CreateDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312051537013_UpdateCategory.cs" />
+    <Compile Include="Migrations\202312051537013_UpdateCategory.designer.cs">
+      <DependentUpon>202312051537013_UpdateCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312051602078_UpdateCategory1.cs" />
+    <Compile Include="Migrations\202312051602078_UpdateCategory1.designer.cs">
+      <DependentUpon>202312051602078_UpdateCategory1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbtrac.cs" />
+    <Compile Include="Models\Commons\Filter.cs" />
     <Compile Include="Models\Entity\Advs.cs" />
     <Compile Include="Models\Entity\Categorys.cs" />
     <Compile Include="Models\Entity\Contacts.cs" />
@@ -2202,6 +2212,8 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\PartiaSidebar.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Add.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2282,6 +2294,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202312051127410_CreateDatabase.resx">
       <DependentUpon>202312051127410_CreateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312051537013_UpdateCategory.resx">
+      <DependentUpon>202312051537013_UpdateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312051602078_UpdateCategory1.resx">
+      <DependentUpon>202312051602078_UpdateCategory1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
