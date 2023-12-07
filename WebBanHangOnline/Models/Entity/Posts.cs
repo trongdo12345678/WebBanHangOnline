@@ -24,6 +24,8 @@ namespace WebBanHangOnline.Models.Entity
         public string SeoTitle { get; set; }
         public string SeoDescripton { get; set; }
         public string SeoKeywords { get; set; }
+        public bool IsActived { get; set; }
+
 
         public virtual Categorys Categorys { get; set; }
     }

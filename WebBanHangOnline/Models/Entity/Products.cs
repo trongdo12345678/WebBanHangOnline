@@ -28,6 +28,7 @@ namespace WebBanHangOnline.Models.Entity
         public bool IsSale { get; set; }
         public bool IsFeature { get; set; }
         public bool IsHot { get; set; }
+        public bool IsActived { get; set; }
         public int ProductCategoryID { get; set; }
         public string SeoTitle { get; set; }
         public string SeoDescripton { get; set; }

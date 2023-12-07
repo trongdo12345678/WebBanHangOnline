@@ -50,7 +50,7 @@
         <div class="card-body">
                 <table class="table table-hover">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>STT</th>
                             <th>Tên danh mục</th>
                             <th>Thứ Tự</th>
@@ -65,10 +65,10 @@
                             foreach (var item in Model)
                             {
                                 <tr id="trow_@item.Id">
-                                    <td>@i</td>
+                                    <td class="text-center">@i</td>
                                     <td>@item.Title</td>
-                                    <td>@item.Position</td>
-                                    <td>
+                                    <td class="text-center">@item.Position</td>
+                                    <td class="text-center">
                                         <a href="/admin/category/edit/@item.Id" class="btn btm-sm btn-primary">Sửa</a>
                                         <a href="#" data-id="@item.Id" class="btn btm-sm btn-danger btnDelete">Xóa</a>
                                     </td>

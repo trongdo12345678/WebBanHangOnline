@@ -50,12 +50,12 @@
         <div class="card-body">
             <table class="table table-hover">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>STT</th>
                         <th>Hình ảnh </th>
                         <th>Tiêu đề tin</th>
                         <th>Ngày tạo</th>
-                        <th>Thứ tự</th>
+                        <th>Hiểm thị</th>
                         <th></th>
 
                     </tr>
@@ -66,12 +66,16 @@
                         var i = 1;
                         foreach (var item in Model)
                         {
+                            var strCheck = item.IsActived ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
                             <tr id="trow_@item.Id">
-                                <td>@i</td>
-                                <td><img src="@item.Image" width="50" /></td>
+                                <td class="text-center">@i</td>
+                                <td class="text-center"><img src="@item.Image" width="50" /></td>
                                 <td>@item.Title</td>
-                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                <td>
+                                <td class="text-center">@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                <td class="text-center">
+                                    <a href="#" data-id="@item.Id" class="btnActived">@Html.Raw(strCheck)</a>
+                                </td>
+                                <td class="text-center">
                                     <a href="/admin/news/edit/@item.Id" class="btn btm-sm btn-primary">Sửa</a>
                                     <a href="#" data-id="@item.Id" class="btn btm-sm btn-danger btnDelete">Xóa</a>
                                 </td>
@@ -106,12 +110,13 @@
 
     <script>
         $(Document).ready(function () {
+
             $('body').on('click', '.btnDelete', function () {
                 var id = $(this).data("id");
                 var conf = confirm('Bạn có muốn xóa bản ghi này hay không');
                 if (conf === true) {
                     $.ajax({
-                        url: '/admin/category/delete',
+                        url: '/admin/news/delete',
                         type: 'POST',
                         data: { id: id },
                         success: function (rs) {
@@ -121,6 +126,28 @@
                         }
                     });
                 }
+            });
+
+            $('body').on('click', '.btnActived', function (e) {
+                //e.preventDefault();
+                var btn = $(this);
+                var id = btn.data("id");
+                $.ajax({
+                    url: '/admin/news/IsActived',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function (rs) {
+                        debugger;
+                        if (rs.success) {
+                            if (rs.isActived) {
+                                btn.html("<i class='fa fa-check text-success'> </i>");
+                            } else {
+                                btn.html("<i class='fas fa-times text-danger'> </i>");
+                            }
+
+                        }
+                    }
+                });
             });
         });
     </script>
