@@ -176,6 +176,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -197,6 +198,10 @@
     <Compile Include="Migrations\202312070855453_UpdateActive.cs" />
     <Compile Include="Migrations\202312070855453_UpdateActive.designer.cs">
       <DependentUpon>202312070855453_UpdateActive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312090826394_changeModels.cs" />
+    <Compile Include="Migrations\202312090826394_changeModels.designer.cs">
+      <DependentUpon>202312090826394_changeModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3131,6 +3136,9 @@
     <Content Include="Content\ckeditor\skins\moono\readme.md" />
     <Content Include="Content\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3221,6 +3229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312070855453_UpdateActive.resx">
       <DependentUpon>202312070855453_UpdateActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312090826394_changeModels.resx">
+      <DependentUpon>202312090826394_changeModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
