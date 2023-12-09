@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WebBanHangOnline.Models.Entity.News>
+﻿@model PagedList.PagedList<WebBanHangOnline.Models.Entity.News>
+@using PagedList.Mvc;
+@using PagedList;
 @{
     ViewBag.Title = "Danh sách tin tức";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -53,14 +55,14 @@
                 <thead>
                     <tr>
                         <th>
-                        <input type="checkbox" id="SelectAll" />
+                            <input type="checkbox" id="SelectAll" />
                         </th>
                         <th class="text-center">STT</th>
                         <th class="text-center">Hình ảnh </th>
                         <th class="text-center">Tiêu đề tin</th>
                         <th class="text-center">Ngày tạo</th>
                         <th class="text-center">Hiểm thị</th>
-                        <th  class="text-center">Chức năng</th>
+                        <th class="text-center">Chức năng</th>
 
 
 
@@ -101,7 +103,16 @@
                     }
                 </tbody>
             </table>
-
+            <div class="row">
+                <div class="col-5">
+                   
+                </div>
+                <div class="col-7">
+                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+                
+            </div>
+            
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
@@ -151,7 +162,7 @@
                                 if (rs.success) {
                                     location.reload();
                                 }
-                            }  
+                            }
                         });
                     }
                 }

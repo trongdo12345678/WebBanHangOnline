@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,9 +13,15 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: Admin/News
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var items= db.News.OrderByDescending(x => x.Id).ToList();
+            var pageSize = 5;
+            if(page == null)
+            {
+                page = 1;
+            }
+            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1; 
+            var items= db.News.OrderByDescending(x => x.Id).ToPagedList(pageIndex,pageSize);
             return View(items);
         }
         //add thêm sản phẩm
