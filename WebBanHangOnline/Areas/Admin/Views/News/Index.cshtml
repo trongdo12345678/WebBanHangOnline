@@ -118,6 +118,45 @@
 
     <script>
         $(Document).ready(function () {
+            //xóa all checkbox đã chọn
+            $('body').on('click', '#BtnDeleteAll', function (e) {
+                e.preventDefault();
+                var str = "";
+                debugger;
+                var checkbox = $(this).parents('.card').find('tr td input:checkbox');
+                var i = 0;
+                checkbox.each(function () {
+                    if (this.checked) {
+                        checkbox.attr('selected', 'checked');
+                        var _id = $(this).val();
+                        if (i === 0) {
+                            str += _id;
+                        } else {
+                            str += "," + _id;
+                        }
+                        i++;
+                    } else {
+                        checkbox.attr('selected', '');
+
+                    }
+                });
+                if (str.length > 0) {
+                    var conf = confirm('Bạn có muốn xóa all bản ghi dưới đây hay không?');
+                    if (conf === true) {
+                        $.ajax({
+                            url: '/news/deleteAll',
+                            type: 'POST',
+                            data: { ids: str },
+                            success: function (rs) {
+                                if (rs.success) {
+                                    location.reload();
+                                }
+                            }  
+                        });
+                    }
+                }
+            });
+            //bật tắt all checkbox
             $('body').on('change', '#SelectAll', function () {
                 var checkStatus = this.checked;
                 var checkbox = $(this).parents('.card-body').find('tr td input:checkbox');
@@ -126,10 +165,11 @@
                     if (this.checked) {
                         checkbox.attr('selected', 'checked');
                     } else {
-
+                        checkbox.attr('selected', '');
                     }
                 });
             });
+            //xóa bản ghi
             $('body').on('click', '.btnDelete', function () {
                 var id = $(this).data("id");
                 var conf = confirm('Bạn có muốn xóa bản ghi này hay không');
@@ -146,7 +186,7 @@
                     });
                 }
             });
-
+            //bật tắt active hiện bài viết hya không
             $('body').on('click', '.btnActived', function () {
                 var btn = $(this);
                 var id = btn.data("id");
