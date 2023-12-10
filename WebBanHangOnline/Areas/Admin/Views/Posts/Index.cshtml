@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WebBanHangOnline.Models.Entity.Posts>
+﻿@model PagedList.PagedList<WebBanHangOnline.Models.Entity.Posts>
+@using PagedList.Mvc;
+@using PagedList;
 @{
     ViewBag.Title = "Bài Viết";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -24,7 +26,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Quản lý @ViewBag.Title</h1>
+                <h1>Quản lý bài viết</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -50,6 +52,20 @@
             </div>
         </div>
         <div class="card-body">
+            <div class="row">
+                <div class="col-9">
+                    @using (Html.BeginForm("index", "Posts", FormMethod.Get, new { }))
+                    {
+                        <div class="input-group input-group-sm">
+                            @Html.TextBox("searchtext", null, new { @class = "form-control" })
+                            <span class="input-group-append">
+                                <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
+                            </span>
+                        </div>
+                    }
+
+                </div>
+            </div>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -63,14 +79,12 @@
                         <th class="text-center">Hiểm thị</th>
                         <th class="text-center">Chức năng</th>
 
-
-
                     </tr>
                 </thead>
                 <tbody>
                     @if (Model != null && Model.Any())
                     {
-                        var i = 1;
+                        var i = ((ViewBag.Page - 1) * ViewBag.Pagesize) + 1;
                         foreach (var item in Model)
                         {
                             var strCheck = item.IsActived ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
@@ -100,7 +114,15 @@
                     }
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col-5">
 
+                </div>
+                <div class="col-7">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+
+            </div>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

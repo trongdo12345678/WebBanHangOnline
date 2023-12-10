@@ -13,17 +13,31 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: Admin/News
-        public ActionResult Index(int? page)
+        public ActionResult Index(string searchtext, int? page)
         {
-            var pageSize = 5;
-            if(page == null)
+            var pageSize = 10;
+            if (page == null)
             {
                 page = 1;
             }
-            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1; 
-            var items= db.News.OrderByDescending(x => x.Id).ToPagedList(pageIndex,pageSize);
+
+            IEnumerable<News> items = db.News.OrderByDescending(x => x.Id);
+
+            if (!string.IsNullOrEmpty(searchtext))
+            {
+                searchtext = searchtext.ToLower(); // Chuyển đổi tất cả thành chữ thường
+                items = items.Where(x => x.Alias.ToLower().Contains(searchtext) || x.Title.ToLower().Contains(searchtext)).ToList();
+            }
+
+            var pageIndex = page.HasValue ? Convert.ToInt32(page) : 1;
+            items = items.OrderByDescending(x => x.Id).ToPagedList(pageIndex, pageSize);
+
+            ViewBag.PageSize = pageSize;
+            ViewBag.Page = page;
+
             return View(items);
         }
+
         //add thêm sản phẩm
         public ActionResult Add()
         {
