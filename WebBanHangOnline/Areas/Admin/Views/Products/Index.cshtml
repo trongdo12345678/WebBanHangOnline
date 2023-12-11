@@ -1,11 +1,10 @@
-﻿@model PagedList.PagedList<WebBanHangOnline.Models.Entity.Posts>
+﻿@model PagedList.PagedList<WebBanHangOnline.Models.Entity.Products>
 @using PagedList.Mvc;
 @using PagedList;
 @{
-    ViewBag.Title = "Bài Viết";
+    ViewBag.Title = "Danh sách sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
 @section naviheader{
 
     <!-- Left navbar links -->
@@ -26,7 +25,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Quản lý bài viết</h1>
+                <h1>Quản lý sản phẩm</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -44,27 +43,28 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Danh sách bài viết</h3>
+            <h3 class="card-title">@ViewBag.Title</h3>
 
             <div class="card-tools">
-                <a href="/admin/posts/add" class="btn btn-primary">Thêm mới</a>
+                <a href="/admin/products/add" class="btn btn-primary">Thêm mới</a>
                 <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
             </div>
         </div>
         <div class="card-body">
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-9">
-                    @using (Html.BeginForm("index", "Posts", FormMethod.Get, new { }))
+                    using (Html.BeginForm("index", "News", FormMethod.Get, new { }))
                     {
                         <div class="input-group input-group-sm">
-                            @Html.TextBox("searchtext", null , new { @class = "form-control" })
-                            <span class="input-group-append">
+                            Html.TextBox("searchtext", null, new { class = "form-control" })
+                            *<input type="text" name="searchtext" class="form-control">*
+                            <!--<span class="input-group-append">
                                 <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
                             </span>
                         </div>
                     }
 
-                </div>
+                </div>-->
             </div>
             <table class="table table-hover">
                 <thead>
@@ -74,17 +74,22 @@
                         </th>
                         <th class="text-center">STT</th>
                         <th class="text-center">Hình ảnh </th>
-                        <th class="text-center">Tiêu đề tin</th>
+                        <th class="text-center">Tên sản phẩm</th>
+                        <th class="text-center">Danh mục</th>
+                        <th class="text-center">Số lượng</th>
+                        <th class="text-center">Gía</th>
                         <th class="text-center">Ngày tạo</th>
                         <th class="text-center">Hiểm thị</th>
                         <th class="text-center">Chức năng</th>
+
+
 
                     </tr>
                 </thead>
                 <tbody>
                     @if (Model != null && Model.Any())
                     {
-                        var i = ((ViewBag.Page - 1) * ViewBag.Pagesize) + 1;
+                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
                         foreach (var item in Model)
                         {
                             var strCheck = item.IsActived ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
@@ -93,18 +98,22 @@
                                 <td class="text-center">@i</td>
                                 <td class="text-center"><img src="@item.Image" width="50" /></td>
                                 <td>@item.Title</td>
+                                <td class="text-center">@item.ProductCategorys.Title</td>
+                                <td class="text-center">@item.Quantity</td>
+                                <td class="text-center">@item.Price</td>
                                 <td class="text-center">@item.CreatedDate.ToString("dd/MM/yyyy")</td>
                                 <td class="text-center">
                                     <a href="#" data-id="@item.Id" class="btnActived">@Html.Raw(strCheck)</a>
                                 </td>
                                 <td class="text-center">
-                                    <a href="/admin/posts/edit/@item.Id" class="btn btm-sm btn-primary">Sửa</a>
+                                    <a href="/admin/products/edit/@item.Id" class="btn btm-sm btn-primary">Sửa</a>
                                     <a href="#" data-id="@item.Id" class="btn btm-sm btn-danger btnDelete">Xóa</a>
                                 </td>
 
                             </tr>
                             i++;
                         }
+
                     }
                     else
                     {
@@ -143,6 +152,7 @@
             $('body').on('click', '#BtnDeleteAll', function (e) {
                 e.preventDefault();
                 var str = "";
+                debugger;
                 var checkbox = $(this).parents('.card').find('tr td input:checkbox');
                 var i = 0;
                 checkbox.each(function () {
@@ -164,7 +174,7 @@
                     var conf = confirm('Bạn có muốn xóa all bản ghi dưới đây hay không?');
                     if (conf === true) {
                         $.ajax({
-                            url: '/posts/deleteAll',
+                            url: '/products/deleteAll',
                             type: 'POST',
                             data: { ids: str },
                             success: function (rs) {
@@ -195,7 +205,7 @@
                 var conf = confirm('Bạn có muốn xóa bản ghi này hay không');
                 if (conf === true) {
                     $.ajax({
-                        url: '/admin/posts/delete',
+                        url: '/admin/products/delete',
                         type: 'POST',
                         data: { id: id },
                         success: function (rs) {
@@ -211,10 +221,11 @@
                 var btn = $(this);
                 var id = btn.data("id");
                 $.ajax({
-                    url: '/admin/posts/IsActived',
+                    url: '/admin/products/IsActived',
                     type: 'POST',
                     data: { id: id },
                     success: function (rs) {
+                        debugger;
                         if (rs.success) {
                             if (rs.isActived) {
                                 btn.html("<i class='fa fa-check text-success'> </i>");
@@ -230,4 +241,7 @@
         });
     </script>
 }
+
+
+
 
