@@ -20,8 +20,18 @@ namespace WebBanHangOnline.Models.Entity
         [Required]
         [StringLength(150)]
         public string Title { get; set; }
+        [Required]
+        [StringLength(150)]
+        public string Alias { get; set; }
         public string Description { get; set; }
+        [StringLength(250)]
         public string Icon { get; set; }
+        [StringLength(500)]
+        public string SeoTitle { get; set; }
+        [StringLength(250)]
+        public string SeoDescripton { get; set; }
+        [StringLength(150)]
+        public string SeoKeywords { get; set; }
 
         public ICollection<Products> Products { get; set; }
 

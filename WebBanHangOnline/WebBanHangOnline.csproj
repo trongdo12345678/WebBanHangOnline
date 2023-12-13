@@ -183,6 +183,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductCategorysController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -209,6 +210,18 @@
     <Compile Include="Migrations\202312090826394_changeModels.cs" />
     <Compile Include="Migrations\202312090826394_changeModels.designer.cs">
       <DependentUpon>202312090826394_changeModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312130648464_CreatedDatabase.cs" />
+    <Compile Include="Migrations\202312130648464_CreatedDatabase.designer.cs">
+      <DependentUpon>202312130648464_CreatedDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312131342138_UpdateProductCategorys.cs" />
+    <Compile Include="Migrations\202312131342138_UpdateProductCategorys.designer.cs">
+      <DependentUpon>202312131342138_UpdateProductCategorys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312131420071_UpdateProductCategorys1.cs" />
+    <Compile Include="Migrations\202312131420071_UpdateProductCategorys1.designer.cs">
+      <DependentUpon>202312131420071_UpdateProductCategorys1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -3149,6 +3162,8 @@
     <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategorys\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategorys\Add.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3242,6 +3257,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202312090826394_changeModels.resx">
       <DependentUpon>202312090826394_changeModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312130648464_CreatedDatabase.resx">
+      <DependentUpon>202312130648464_CreatedDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312131342138_UpdateProductCategorys.resx">
+      <DependentUpon>202312131342138_UpdateProductCategorys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312131420071_UpdateProductCategorys1.resx">
+      <DependentUpon>202312131420071_UpdateProductCategorys1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

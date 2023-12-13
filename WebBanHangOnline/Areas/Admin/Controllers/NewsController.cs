@@ -107,7 +107,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             }
             return Json(new { success = false });
         }
-
+        //deleteall tin
         public ActionResult DeleteAll(string ids)
         {
             if (!string.IsNullOrEmpty(ids))

@@ -1,10 +1,10 @@
-﻿@model PagedList.PagedList<WebBanHangOnline.Models.Entity.Products>
-@using PagedList.Mvc;
-@using PagedList;
+﻿@model IEnumerable<WebBanHangOnline.Models.Entity.ProductCategorys>
+
 @{
-    ViewBag.Title = "Sản phẩm";
+    ViewBag.Title = "Danh mục sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 @section naviheader{
 
     <!-- Left navbar links -->
@@ -16,7 +16,7 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/category" class="nav-link">@ViewBag.Title</a>
+            <a href="/admin/productcategorys" class="nav-link">@ViewBag.Title</a>
         </li>
     </ul>
 }
@@ -25,7 +25,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Quản lý sản phẩm</h1>
+                <h1>Danh mục sản phẩm</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -46,98 +46,58 @@
             <h3 class="card-title">@ViewBag.Title</h3>
 
             <div class="card-tools">
-                <a href="/admin/products/add" class="btn btn-primary">Thêm mới</a>
-                <a href="#" class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
+                <a href="/admin/productcategorys/add" class="btn btn-primary">Thêm mới</a>
             </div>
         </div>
         <div class="card-body">
-            <!--<div class="row">
-                <div class="col-9">
-                    using (Html.BeginForm("index", "News", FormMethod.Get, new { }))
+          
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">STT</th>
+                    <th class="text-center">Tên danh mục</th>
+                    <th class="text-center">Ngày tạo</th>
+                    <th class="text-center">Chức năng</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    var i = 1;
+                    foreach (var item in Model)
                     {
-                        <div class="input-group input-group-sm">
-                            Html.TextBox("searchtext", null, new { class = "form-control" })
-                            *<input type="text" name="searchtext" class="form-control">*
-                            <!--<span class="input-group-append">
-                                <button type="submit" class="btn btn-info btn-flat">Tìm kiếm</button>
-                            </span>
-                        </div>
-                    }
+                        <tr id="trow_@item.Id">
+                            <td class="text-center">@i</td>
+                            <td>@item.Title</td>
+                            <td class="text-center">@item.CreatedDate.ToString("dd/MM/yyyy")</td>
 
-                </div>-->
-            </div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>
-                            <input type="checkbox" id="SelectAll" />
-                        </th>
-                        <th class="text-center">STT</th>
-                        <th class="text-center">Hình ảnh </th>
-                        <th class="text-center">Tên sản phẩm</th>
-                        <th class="text-center">Danh mục</th>
-                        <th class="text-center">Số lượng</th>
-                        <th class="text-center">Gía</th>
-                        <th class="text-center">Ngày tạo</th>
-                        <th class="text-center">Hiểm thị</th>
-                        <th class="text-center">Chức năng</th>
+                            <td class="text-center">
+                                <a href="/admin/products/edit/@item.Id" class="btn btm-sm btn-primary">Sửa</a>
+                                <a href="#" data-id="@item.Id" class="btn btm-sm btn-danger btnDelete">Xóa</a>
+                            </td>
 
-
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null && Model.Any())
-                    {
-                        var i = ((ViewBag.Page - 1) * ViewBag.PageSize) + 1;
-                        foreach (var item in Model)
-                        {
-                            var strCheck = item.IsActived ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
-                            <tr id="trow_@item.Id">
-                                <td><input type="checkbox" class="ckbItem" value="@item.Id" /></td>
-                                <td class="text-center">@i</td>
-                                <td class="text-center"><img src="@item.Image" width="50" /></td>
-                                <td>@item.Title</td>
-                                <td class="text-center">@item.ProductCategorys.Title</td>
-                                <td class="text-center">@item.Quantity</td>
-                                <td class="text-center">@item.Price</td>
-                                <td class="text-center">@item.CreatedDate.ToString("dd/MM/yyyy")</td>
-                                <td class="text-center">
-                                    <a href="#" data-id="@item.Id" class="btnActived">@Html.Raw(strCheck)</a>
-                                </td>
-                                <td class="text-center">
-                                    <a href="/admin/products/edit/@item.Id" class="btn btm-sm btn-primary">Sửa</a>
-                                    <a href="#" data-id="@item.Id" class="btn btm-sm btn-danger btnDelete">Xóa</a>
-                                </td>
-
-                            </tr>
-                            i++;
-                        }
-
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="4">Không có bản ghi nào !</td>
                         </tr>
+                        i++;
                     }
-                </tbody>
-            </table>
-            <div class="row">
-                <div class="col-5">
 
-                </div>
-                <div class="col-7">
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-                </div>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4">Không có bản ghi nào !</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
 
-            </div>
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-
-        </div>
-        <!-- /.card-footer-->
+    </div>
+    <!-- /.card-footer-->
     </div>
     <!-- /.card -->
 
@@ -174,7 +134,7 @@
                     var conf = confirm('Bạn có muốn xóa all bản ghi dưới đây hay không?');
                     if (conf === true) {
                         $.ajax({
-                            url: '/products/deleteAll',
+                            url: '/productcategorys/deleteAll',
                             type: 'POST',
                             data: { ids: str },
                             success: function (rs) {
@@ -205,7 +165,7 @@
                 var conf = confirm('Bạn có muốn xóa bản ghi này hay không');
                 if (conf === true) {
                     $.ajax({
-                        url: '/admin/products/delete',
+                        url: '/admin/productcategorys/delete',
                         type: 'POST',
                         data: { id: id },
                         success: function (rs) {
@@ -221,7 +181,7 @@
                 var btn = $(this);
                 var id = btn.data("id");
                 $.ajax({
-                    url: '/admin/products/IsActived',
+                    url: '/admin/productcategorys/IsActived',
                     type: 'POST',
                     data: { id: id },
                     success: function (rs) {
@@ -241,7 +201,6 @@
         });
     </script>
 }
-
 
 
 
