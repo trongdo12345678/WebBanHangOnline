@@ -40,6 +40,34 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             return View();
 
         }
+        public ActionResult Edit(int Id)
+        {
+            var item = db.ProductCates.Find(Id);
+            return View(item);
+        }
+        //update danh mục sản phẩm
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ProductCategorys model)
+        {
+            if (ModelState.IsValid)
+            {
+                db.ProductCates.Attach(model);
+                model.ModifiedrDate = DateTime.Now;
+                model.Alias = WebBanHangOnline.Models.Commons.Filter.FilterChar(model.Title);
+                db.Entry(model).Property(x => x.Title).IsModified = true;
+                db.Entry(model).Property(x => x.Description).IsModified = true;
+                db.Entry(model).Property(x => x.Alias).IsModified = true;
+                db.Entry(model).Property(x => x.Icon).IsModified = true;
+                db.Entry(model).Property(x => x.SeoDescripton).IsModified = true;
+                db.Entry(model).Property(x => x.SeoKeywords).IsModified = true;
+                db.Entry(model).Property(x => x.SeoTitle).IsModified = true;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+
+        }
         //delete danh mục sản phẩm
         [HttpPost]
         public ActionResult Delete(int id)
@@ -53,25 +81,6 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                 return Json(new { success = true });
             }
             return Json(new { success = false });
-        }
-        //daleteall danh muc sản phẩm
-        public ActionResult DeleteAll(string ids)
-        {
-            if (!string.IsNullOrEmpty(ids))
-            {
-                var items = ids.Split(',');
-                if (items != null && items.Any())
-                {
-                    foreach (var item in items)
-                    {
-                        var obj = db.ProductCates.Find(Convert.ToInt32(item));
-                        db.ProductCates.Remove(obj);
-                        db.SaveChanges();
-                    }
-                }
-                return Json(new { success = true });
-            }
-            return Json(new { success = false });
-        }
+        } 
     }
 }

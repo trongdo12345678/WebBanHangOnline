@@ -3164,6 +3164,7 @@
     <Content Include="Areas\Admin\Views\Products\Add.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategorys\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategorys\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategorys\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
