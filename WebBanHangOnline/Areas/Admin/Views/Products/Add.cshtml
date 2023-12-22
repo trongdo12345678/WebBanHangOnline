@@ -166,7 +166,7 @@
                                                            </tr>
                                                        </thead>
                                                        <tbody id="tpHtml">
-                                                           <tr class="text-center">
+                                                           @*<tr class="text-center">
                                                                <td>1</td>
                                                                <td><img src="~/Uploads/images/blogaudi1.jpg" width="70" height="50" /></td>
                                                                <td><input type="radio" name="rDefault"/></td>
@@ -177,7 +177,7 @@
                                                                <td><img src="~/Uploads/images/blogaudi1.jpg" width="70" height="50" /></td>
                                                                <td><input type="radio" name="rDefault" /></td>
                                                                <td><a href="#" class="btn btm-sm btn-danger">Xóa</a></td>
-                                                           </tr>
+                                                           </tr>*@
                                                        </tbody>
                                                    </table>
                                                    <input type="hidden" id="tCurentId" value="0" />
@@ -252,15 +252,14 @@
             var curent = $('#tCurentId').val();
             var curentId = parseInt(curent) + 1;
             var str = "";
-            str += `
-     <td>${curentId}</td>
-     <td><img src="${url}" width="70" height="50" /></td>
-     <td><input type="radio" name="rDefault" /></td>
-     <td><a href="#" class="btn btm-sm btn-danger">Xóa</a></td>
- </tr>`;
-            $('tpHtml').append(str);
-
-
+            str += `<tr class="text-center">
+                        <td>${curentId}</td>
+                        <td><img src="${url}" height="50" /></td>
+                        <td><input type="radio" name="rDefault" /></td>
+                        <td><a href="#" class="btn btm-sm btn-danger">Xóa</a></td>
+                    </tr>`;
+            $('#tpHtml').append(str);
+            //$('#tCurentId').val(curentId);
         }
     </script>
 
