@@ -166,18 +166,7 @@
                                                            </tr>
                                                        </thead>
                                                        <tbody id="tpHtml">
-                                                           @*<tr class="text-center">
-                                                               <td>1</td>
-                                                               <td><img src="~/Uploads/images/blogaudi1.jpg" width="70" height="50" /></td>
-                                                               <td><input type="radio" name="rDefault"/></td>
-                                                               <td><a href="#" class="btn btm-sm btn-danger">Xóa</a></td>
-                                                           </tr>
-                                                           <tr class="text-center">
-                                                               <td>2</td>
-                                                               <td><img src="~/Uploads/images/blogaudi1.jpg" width="70" height="50" /></td>
-                                                               <td><input type="radio" name="rDefault" /></td>
-                                                               <td><a href="#" class="btn btm-sm btn-danger">Xóa</a></td>
-                                                           </tr>*@
+                                                          
                                                        </tbody>
                                                    </table>
                                                    <input type="hidden" id="tCurentId" value="0" />
@@ -241,6 +230,20 @@
                 extraAllowedContent:'span',
             });
         });
+        $('body').on('click', '.btnXoaAnh', function () {
+            var conf = confirm('Bạn có muốn xóa bản ghi này không?')
+            if (conf == true) {
+                var _id = $(this).data('id');
+                $('#trow_' + _id).fadeTo('fast', 0.5, function () {
+                    $(this).slideUp('fast', function () {
+                        $(this).remove();
+                    });
+                });
+                var temp = $('#tCurentId').val();
+                var curentId = parseInt(temp) - 1;
+                $('#tCurentId').val(curentId);
+            }
+        });
         function BrowseServer(field) {
             var finder = new CKFinder();
             finder.selectActionFunction = function (fileUrl) {
@@ -249,17 +252,44 @@
             finder.popup();
         }
         function addImageProduct(url) {
-            var curent = $('#tCurentId').val();
-            var curentId = parseInt(curent) + 1;
+            var temp = $('#tCurentId').val();
+            var curentId = parseInt(temp) + 1;
             var str = "";
-            str += `<tr class="text-center">
-                        <td>${curentId}</td>
-                        <td><img src="${url}" height="50" /></td>
-                        <td><input type="radio" name="rDefault" /></td>
-                        <td><a href="#" class="btn btm-sm btn-danger">Xóa</a></td>
-                    </tr>`;
+            if (curentId == 1) {
+                str += `<tr class="text-center" id="trow_${curentId}">
+                             <td>${curentId}</td>
+                             <td><img src="${url}" height="50" /></td>
+                             <td><input type="radio" value="${curentId}" name="rDefault" checked="checked" /></td>
+                             <td><a href="#" data-id="${curentId}" class="btn btm-sm btn-danger btnXoaAnh">Xóa</a></td>
+                         </tr>`;
+            }
+            else {
+                str += `<tr class="text-center" id="trow_${curentId}">
+                             <td>${curentId}</td>
+                             <td><img src="${url}" height="50" /></td>
+                             <td><input type="radio" name="rDefault" value="${curentId}"/></td>
+                             <td><a href="#" data-id="${curentId}" class="btn btm-sm btn-danger btnXoaAnh">Xóa</a></td>
+                         </tr>`;
+            }
+           
             $('#tpHtml').append(str);
-            //$('#tCurentId').val(curentId);
+            $('#tCurentId').val(curentId);
+            //$('#tpHtml tr td a').each(function () {
+            //    $(this).click(function () {
+            //        var conf = confirm('Bạn có muốn xóa bản ghi này không?')
+            //        if (conf == true) {
+            //            var _id = $(this).data('id');
+            //            $('#trow_' + _id).fadeTo('fast', 0.5, function () {
+            //                $(this).slideUp('fast', function () {
+            //                    $(this).remove();
+            //                });
+            //            });
+            //            var temp = $('#tCurentId').val();
+            //            var curentId = parseInt(temp) - 1;
+            //            $('#tCurentId').val(curentId);
+            //        }
+            //    });
+            //});
         }
     </script>
 
