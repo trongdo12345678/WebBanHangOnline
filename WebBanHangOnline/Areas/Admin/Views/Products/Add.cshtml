@@ -102,15 +102,16 @@
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Giá</label>
-                                                    <input type="text" name="demoPrice" id="demoPrice" class="auto" data-a-dec="," data-a-sep=".">
-                                                    @Html.HiddenFor(x => x.Price, new { @class = "form-control", @placeholder = "Giá" })
+                                                    <input type="text" name="demoPrice" id="demoPrice" class=" form-control auto" data-a-dec="," data-a-sep="." value="0">
+                                                    @Html.HiddenFor(x => x.Price, new { @class = "", @placeholder = "Giá" })
                                                     @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Giá khuyến mãi</label>
-                                                    @Html.TextBoxFor(x => x.PriceSale, new { @class = "form-control", @placeholder = "Giá khuyến mãi" })
+                                                    <input type="text" name="demoPriceSale" id="demoPriceSale" class=" form-control auto" data-a-dec="," data-a-sep="." value="0">
+                                                    @Html.HiddenFor(x => x.PriceSale, new { @class = "", @placeholder = "Giá khuyến mãi" })
                                                     @Html.ValidationMessageFor(x => x.PriceSale, null, new { @class = "text-danger" })
                                                 </div>
                                             </div>
@@ -227,10 +228,15 @@
     <script>
         $(Document).ready(function () {
             $('.auto').autoNumeric('init');
-            $('#demoPrice').bind('blur focusout keypress keyup', function () {
+            $('#demoPrice').on('blur focusout keypress keyup', function () {
                 var demoGet = $('#demoPrice').autoNumeric('get');
                 $('#Price').val(demoGet);
                 $('#Price').autoNumeric('set', demoGet);
+            });
+            $('#demoPriceSale').bind('blur focusout keypress keyup', function () {
+                var demoGet = $('#demoPriceSale').autoNumeric('get');
+                $('#PriceSale').val(demoGet);
+                $('#PriceSale').autoNumeric('set', demoGet);
             });
             CKEDITOR.replace('txtDetail', {
                 customConfig: '/content/ckeditor/config.js',
