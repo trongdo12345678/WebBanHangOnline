@@ -35,6 +35,17 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             ViewBag.ProductCategorys = new SelectList(db.ProductCates.ToList(),"Id","Title");
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add(Products model)
+        {
+            if(ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+            ViewBag.ProductCategorys = new SelectList(db.ProductCates.ToList(), "Id", "Title");
+            return View(model);
+        }
 
     }
 }
