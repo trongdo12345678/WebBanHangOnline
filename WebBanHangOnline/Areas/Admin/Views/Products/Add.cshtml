@@ -104,16 +104,16 @@
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Giá</label>
-                                                <input type="text" name="demoPrice" id="demoPrice" class="form-control auto" data-a-dec="," data-a-sep="." value="0">
-                                                @Html.HiddenFor(x => x.Price, new { @class = "", @placeholder = "Giá" })
+                                                @*<input type="text" name="demoPrice" id="demoPrice" class="form-control auto" data-a-dec="," data-a-sep="." value="0">*@
+                                                @Html.TextBoxFor(x => x.Price, new { @class = "form-control", @placeholder = "Giá" })
                                                 @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Giá khuyến mãi</label>
-                                                <input type="text" name="demoPriceSale" id="demoPriceSale" class="form-control auto" data-a-dec="," data-a-sep="." value="0">
-                                                @Html.HiddenFor(x => x.PriceSale, new { @class = "", @placeholder = "Giá khuyến mãi" })
+                                                @*<input type="text" name="demoPriceSale" id="demoPriceSale" class="form-control auto" data-a-dec="," data-a-sep="." value="0">*@
+                                                @Html.TextBoxFor(x => x.PriceSale, new { @class = "form-control", @placeholder = "Giá khuyến mãi" })
                                                 @Html.ValidationMessageFor(x => x.PriceSale, null, new { @class = "text-danger" })
                                             </div>
                                         </div>
