@@ -235,6 +235,7 @@
     <Compile Include="Models\Entity\SystemSettings.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -3267,6 +3268,68 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\images\blogaudi1.jpg" />
+    <Content Include="Uploads\images\em.jpg" />
+    <Content Include="Uploads\images\logoo.png" />
+    <Content Include="Uploads\images\sanpham\banner_1.jpg" />
+    <Content Include="Uploads\images\sanpham\banner_2.jpg" />
+    <Content Include="Uploads\images\sanpham\banner_3.jpg" />
+    <Content Include="Uploads\images\sanpham\blog_1.jpg" />
+    <Content Include="Uploads\images\sanpham\blog_2.jpg" />
+    <Content Include="Uploads\images\sanpham\blog_3.jpg" />
+    <Content Include="Uploads\images\sanpham\deal_ofthe_week.png" />
+    <Content Include="Uploads\images\sanpham\desc_1.jpg" />
+    <Content Include="Uploads\images\sanpham\desc_2.jpg" />
+    <Content Include="Uploads\images\sanpham\desc_3.jpg" />
+    <Content Include="Uploads\images\sanpham\map_marker.png" />
+    <Content Include="Uploads\images\sanpham\product_1.png" />
+    <Content Include="Uploads\images\sanpham\product_10.png" />
+    <Content Include="Uploads\images\sanpham\product_2.png" />
+    <Content Include="Uploads\images\sanpham\product_3.png" />
+    <Content Include="Uploads\images\sanpham\product_4.png" />
+    <Content Include="Uploads\images\sanpham\product_5.png" />
+    <Content Include="Uploads\images\sanpham\product_6.png" />
+    <Content Include="Uploads\images\sanpham\product_7.png" />
+    <Content Include="Uploads\images\sanpham\product_8.png" />
+    <Content Include="Uploads\images\sanpham\product_9.png" />
+    <Content Include="Uploads\images\sanpham\single_1.jpg" />
+    <Content Include="Uploads\images\sanpham\single_1_thumb.jpg" />
+    <Content Include="Uploads\images\sanpham\single_2.jpg" />
+    <Content Include="Uploads\images\sanpham\single_2_thumb.jpg" />
+    <Content Include="Uploads\images\sanpham\single_3.jpg" />
+    <Content Include="Uploads\images\sanpham\single_3_thumb.jpg" />
+    <Content Include="Uploads\images\sanpham\slider_1.jpg" />
+    <Content Include="Uploads\_thumbs\Images\blogaudi1.jpg" />
+    <Content Include="Uploads\_thumbs\Images\em.jpg" />
+    <Content Include="Uploads\_thumbs\Images\logoo.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\banner_1.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\banner_2.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\banner_3.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\blog_1.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\blog_2.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\blog_3.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\deal_ofthe_week.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\desc_1.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\desc_2.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\desc_3.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\map_marker.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\product_1.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\product_10.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\product_2.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\product_3.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\product_4.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\product_5.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\product_6.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\product_7.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\product_8.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\product_9.png" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\single_1.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\single_1_thumb.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\single_2.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\single_2_thumb.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\single_3.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\single_3_thumb.jpg" />
+    <Content Include="Uploads\_thumbs\Images\sanpham\slider_1.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -3310,6 +3373,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\ckfinder\userfiles\" />
+    <Folder Include="Uploads\files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootraps\bootstrap.rtl.min.css.map" />

@@ -38,7 +38,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
             return View(items);
         }
 
-        //add thêm sản phẩm
+        //add thêm News
         public ActionResult Add()
         {
             return View();

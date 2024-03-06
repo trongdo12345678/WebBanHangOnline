@@ -33,7 +33,7 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
                 model.ModifiedrDate = DateTime.Now;
                 model.Alias = WebBanHangOnline.Models.Commons.Filter.FilterChar(model.Title);
                 db.Categorles.Add(model);
-                db.SaveChanges();
+                db.SaveChanges();   
                 return RedirectToAction("Index");
             }
             return View(model);
